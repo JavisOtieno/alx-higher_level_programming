@@ -1,9 +1,17 @@
 #!/usr/bin/node
-if (process.argv.length <= 3) {
-  console.log(0);
-} else {
-  const args = process.argv.map(Number)
-    .slice(2, process.argv.length)
-    .sort((a, b) => a - b);
-  console.log(args[args.length - 2]);
+
+let numbers = process.argv.slice(2);
+numbers = numbers.map(number => parseInt(number, 10));
+
+let biggest = 0;
+let secondBiggest = 0;
+
+for (const num of numbers) {
+  if (num >= biggest) {
+    secondBiggest = biggest;
+    biggest = num;
+  }
+  if (num < biggest && num >= secondBiggest) secondBiggest = num;
 }
+
+console.log(secondBiggest);
