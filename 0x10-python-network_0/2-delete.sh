@@ -1,3 +1,3 @@
 #!/bin/bash
-# Send a DELETE request to a URL and display the body of the response
-curl -sL -X DELETE -- "$1"
+# sends DELETE req to $1 URL and display response body
+curl -s "$1" -X DELETE
